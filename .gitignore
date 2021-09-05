@@ -9,9 +9,9 @@
 /coverage
 
 # production
-; /build
+/build
 #config
-/src/config/firebase/index.js
+; /src/config/firebase/index.js
 # misc
 .DS_Store
 .env.local
