@@ -11,7 +11,7 @@ const firebaseConfig = {
     storageBucket: "obathewan-b45f3.appspot.com",
     messagingSenderId: "537900321893",
     appId: "1:537900321893:web:66f2fb16cb2d01ef2d0a8c",
-    measurementId: "G-LKZZCR5EM2x"
+    measurementId: "G-LKZZCR5EM2"
 };
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
