@@ -32,3 +32,6 @@
   z-index: 10;
   opacity: 0;
 }
+.modal-footer.css {
+  justify-content: center;
+}
