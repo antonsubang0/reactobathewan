@@ -20,15 +20,15 @@ const Form = (props) => {
                         <input type="text" value={props.dataValue.hewan} onChange={props.inputForm} className="form-control" id="hewan" />
                     </div>
                     <div className="mb-2">
-                        <label htmlFor="ciri2" className="form-label">Ciri-ciri</label>
-                        <input type="text" value={props.dataValue.ciri2} onChange={props.inputForm} className="form-control" id="ciri2" />
-                    </div>
-                    <div className="mb-2">
                         <label htmlFor="deskripsi" className="form-label">Deskripsi</label>
                         <textarea value={props.dataValue.deskripsi} onChange={props.inputForm} className="form-control" id="deskripsi" rows="3"></textarea>
                     </div>
+                    <div className="mb-2">
+                        <label htmlFor="sumber" className="form-label">Sumber</label>
+                        <input type="text" value={props.dataValue.sumber} onChange={props.inputForm} className="form-control" id="sumber" />
+                    </div>
                     <div className="text-center mt-3">
-                        <button type="button" onClick={props.submit} className="btn btn-primary">Primary</button>
+                        <button type="button" onClick={props.submit} className="btn btn-primary">Kirim</button>
                     </div>
                 </div>
             </div>

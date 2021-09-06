@@ -2,9 +2,10 @@ import firebase from './index.js';
 
 const writeData = (data) => {
   return new Promise((resolve, reject)=>{
+    const date = new Date();
+    data.date = date.toLocaleDateString();
     firebase.database().ref('data/').push(data)
     .then(()=>{ 
-      const date = new Date();
       firebase.database().ref('log/').push({item : 'menambahakan item : ' + data.judul, date : date.toLocaleDateString() })
       resolve(true)
     }).catch(()=>{
@@ -49,13 +50,13 @@ const readData =  (category, data1) => {
     const bacaData = [];
     firebase.database().ref('data/').once('value', (snapshot) => {
         snapshot.forEach(childSnapshot => {
-          const { judul, indikasi, hewan, ciri2, deskripsi, jenis, img, date } = childSnapshot.val();
+          const { judul, indikasi, hewan, sumber, deskripsi, jenis, img, date } = childSnapshot.val();
           const temp1 = {
               id : childSnapshot.key,
               judul : judul,
               indikasi : indikasi,
               hewan : hewan,
-              ciri2: ciri2,
+              sumber: sumber,
               deskripsi : deskripsi,
               img : img,
               jenis : jenis,

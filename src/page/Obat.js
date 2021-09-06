@@ -42,7 +42,7 @@ const Obat = () => {
         firstLoad();
     },[category]);
     const [detail, setdetail] = useState({
-        ciri2: '',
+        sumber: '',
         date: '',
         deskripsi: '',
         hewan: '',
@@ -52,15 +52,16 @@ const Obat = () => {
         jenis: '',
         judul: '',
     });
-    const [dataPost, setdataPost] = useState({
+    const dataEmpty = {
         judul : '',
         indikasi : '',
         jenis : category,
         hewan : '',
-        ciri2 : '',
+        sumber : '',
         deskripsi : '',
         img : '',
-    });
+    };
+    const [dataPost, setdataPost] = useState(dataEmpty);
     const [imagex, setimagex] = useState(image);
     const inputForm = (e) => {
         const { id, value } = e.target;
@@ -73,15 +74,7 @@ const Obat = () => {
         await uploadImage(imagex).then((res)=>{
             dataPost.img = res;
             writeData(dataPost).then(()=>{
-                setdataPost({
-                    judul : '',
-                    indikasi : '',
-                    jenis : category,
-                    hewan : '',
-                    ciri2 : '',
-                    deskripsi : '',
-                    img : '',
-                });
+                setdataPost(dataEmpty);
                 setimagex(image);
                 readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
             });
