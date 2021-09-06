@@ -5,6 +5,7 @@ import { readSaran } from "../config/firebase/firebase";
 const Saran = () => {
     const [state, setstate] = useState([]);
     useEffect(()=>{
+        document.querySelector('body').style.overflow  = 'auto';
         const firstLoad = () => {
             readSaran().then(res => setstate(res));
         }

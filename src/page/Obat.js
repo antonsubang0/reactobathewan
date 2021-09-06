@@ -34,6 +34,7 @@ const Obat = () => {
         }
     }
     useEffect(()=> {
+        document.querySelector('body').style.overflow  = 'auto';
         const firstLoad = async () => {
             await readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
             document.getElementById('closeNav').click();

@@ -5,6 +5,7 @@ import { readHistory } from "../config/firebase/firebase";
 const History = () => {
     const [state, setstate] = useState([]);
     useEffect(()=>{
+        document.querySelector('body').style.overflow  = 'auto';
         const firstLoad = () => {
             readHistory().then(res => setstate(res));
         }

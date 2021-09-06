@@ -18,6 +18,10 @@
   background: #fdbd0d; 
 }
 
+body {
+  overflow-y: auto;
+}
+
 .fs-10 {
   font-size: 12px;
 }

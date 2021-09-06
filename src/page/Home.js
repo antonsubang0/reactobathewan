@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavbarCs from "../component/NavbarCs";
 
 const Home = () => {
-
+    useEffect(()=>{
+        document.querySelector('body').style.overflow  = 'auto';
+    },[]);
     return (
         <>
             <NavbarCs />
