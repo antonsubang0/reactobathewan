@@ -66,7 +66,7 @@ const Obat = () => {
         const { id, value } = e.target;
         setdataPost(prevState => ({
                 ...prevState,
-                [id]: value
+                [id]: value.split('\n').join(' ')
         }));
     };
     const submit = async () => {
