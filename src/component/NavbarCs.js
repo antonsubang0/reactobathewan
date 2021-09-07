@@ -30,7 +30,7 @@ const NavbarCs = () => {
                             <ListNavbar ke='/home/obat' label='Obat' />
                             <ListNavbar ke='/home/vaksin' label='Vaksin' />
                             <ListNavbar ke='/home/suplement' label='Suplement' />
-                            <ListNavbar ke='/home/pakan' label='Pakan' />
+                            <ListNavbar ke='/home/desinfektan' label='Desinfektan' />
                             <ListNavbar ke='/home/saran' label='Saran' />
                             <ListNavbar ke='/home/history' label='History' />
                         </ul>

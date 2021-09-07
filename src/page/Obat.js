@@ -112,7 +112,7 @@ const Obat = () => {
         const filess= [...e.target.files];
         kompres.compress(filess, {
             size: 4,
-            quality: 0.60,
+            quality: 0.75,
             maxWidth: 320,
             maxHeight: 240,
             resize: true
