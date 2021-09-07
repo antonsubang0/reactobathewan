@@ -123,6 +123,10 @@ const Obat = () => {
             setimagex(`${data[0].prefix} ${data[0].data}`);
         });
     };
+    const [imagebefore, setImagebefore] = useState(true);
+    const bfloadImage = () => {
+        setImagebefore(false);
+    }
 
     return (
         <>
@@ -149,8 +153,10 @@ const Obat = () => {
                                             <div className="card-body">
                                                 <div className="row">
                                                     <div className="col-5 col-md-4 col-lg-6">
+                                                        { imagebefore ? <img className="card-img-top" src={image} alt='default' /> : null}
                                                     <LazyLoadImage className="card-img-top"
                                                         alt={data.judul}
+                                                        afterLoad={bfloadImage}
                                                         effect="blur"
                                                         src={data.img} />
                                                     </div>
