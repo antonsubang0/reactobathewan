@@ -6,6 +6,8 @@ import { readData, uploadImage, writeData, deleteData } from '../config/firebase
 import Form from "../component/Formx";
 import Modal from "../component/Modal";
 import Compress from "compress.js";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Obat = () => {
     const {category} = useParams();
@@ -147,7 +149,10 @@ const Obat = () => {
                                             <div className="card-body">
                                                 <div className="row">
                                                     <div className="col-5 col-md-4 col-lg-6">
-                                                        <img src={data.img} className="card-img-top" alt="..." />
+                                                    <LazyLoadImage className="card-img-top"
+                                                        alt={data.judul}
+                                                        effect="blur"
+                                                        src={data.img} />
                                                     </div>
                                                     <div className="col-7 col-md-8 col-lg-6">
                                                         <h6>{data.judul}</h6>

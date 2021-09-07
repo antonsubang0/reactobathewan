@@ -1,3 +1,6 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const Modal = (props) => {
     return (
         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -8,7 +11,10 @@ const Modal = (props) => {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body text-center">
-                        <img src={props.detail.img} alt={props.detail.judul} className="img-fluid rounded text-center"></img>
+                        <LazyLoadImage className="img-fluid rounded text-center"
+                            alt={props.detail.judul}
+                            effect="blur"
+                            src={props.detail.img} />
                         <h6 className="mt-3">{props.detail.judul}</h6>
                         <p className="card-text mb-1 fs-10"><span className="fw-bold">Mengobati :</span> {props.detail.indikasi}</p>
                         <p className="card-text mb-1 fs-10"><span className="fw-bold">Hewan :</span> {props.detail.hewan}</p>

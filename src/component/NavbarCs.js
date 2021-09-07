@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import Logo from '../assets/logo.png'
 
 const ListNavbar = ({ke, label}) => {
     let match = useLocation();
@@ -14,7 +15,7 @@ const NavbarCs = () => {
         <>
             <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
                 <div className="container">
-                <Link className="navbar-brand" to="#">Obat Hewan</Link>
+                <Link className="navbar-brand" to="/home"><img src={Logo} alt='OB' /> Obat Hewan</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span className="navbar-toggler-icon"></span>
                 </button>
