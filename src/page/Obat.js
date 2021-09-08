@@ -1,8 +1,8 @@
 import NavbarCs from "../component/NavbarCs";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import image from '../assets/image.png';
-import { readData, uploadImage, writeData, deleteData } from '../config/firebase/firebase'
+import { readData, uploadImage, writeData, deleteData, statusLogin } from '../config/firebase/firebase'
 import Form from "../component/Formx";
 import Modal from "../component/Modal";
 import Compress from "compress.js";
@@ -10,6 +10,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Obat = () => {
+    const history = useHistory();
     const {category} = useParams();
     const [dataApi, setDataApi] = useState([]);
     const [dataCategory, setdataCategory] = useState([]);
@@ -37,12 +38,15 @@ const Obat = () => {
     }
     useEffect(()=> {
         document.querySelector('body').style.overflow  = 'auto';
+        if (!statusLogin()) {
+            history.push('/');   
+        }
         const firstLoad = async () => {
             await readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
             document.getElementById('closeNav').click();
         }
         firstLoad();
-    },[category]);
+    },[category, history]);
     const [detail, setdetail] = useState({
         sumber: '',
         date: '',

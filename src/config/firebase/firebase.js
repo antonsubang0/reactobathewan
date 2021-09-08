@@ -129,4 +129,12 @@ const logoutFire = () => {
   })
 }
 
-export { writeData, readData, uploadImage, deleteData, readHistory, readSaran, registerFire, logoutFire };
+const statusLogin = () => {
+  const status = localStorage.getItem('loses');
+  if (status && status !== '') {
+      return true              
+  }
+  return false;
+}
+
+export { writeData, readData, uploadImage, deleteData, readHistory, readSaran, registerFire, logoutFire, statusLogin };

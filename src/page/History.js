@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import NavbarCs from "../component/NavbarCs";
-import { readHistory } from "../config/firebase/firebase";
+import { readHistory, statusLogin } from "../config/firebase/firebase";
 
 const History = () => {
+    const history = useHistory();
     const [state, setstate] = useState([]);
     useEffect(()=>{
         document.querySelector('body').style.overflow  = 'auto';
+        if (!statusLogin()) {
+            history.push('/');   
+        }
         const firstLoad = () => {
             readHistory().then(res => setstate(res));
         }
         firstLoad();
-    },[]);
+    },[history]);
     return (
         <>
             <NavbarCs />
