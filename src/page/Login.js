@@ -32,7 +32,7 @@ const Login = () => {
 
     return (
         <div className='logincs bg-primary bg-opacity-50'>
-            <div className='card col-xl-3 col-md-4 col-sm-6 col-12 p-3'>
+            <div className='card col-xl-3 col-md-4 col-sm-6 col-10 p-3'>
                 <form className="form-signin text-center" onSubmit={sumbitForm}>
                     <img className="mb-4" src={LogoCenter} alt="" width="72" height="72" />
                     <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
