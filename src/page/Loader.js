@@ -26,7 +26,7 @@ const Loader = () => {
                 </div>
                 <div className="row justify-content-center mt-1 mb-3 text-center">
                     <div className='col-8 col-sm-6 col-md-4 col-lg-3 h2'>Obat Hewan</div>
-                    <p className='px-2'>Aplikasi Obat Hewan adalah Katalog Obat Hewan untuk mempermudah mencari obat hewan.</p>
+                    <p className='px-3'>Aplikasi Obat Hewan adalah Katalog Obat Hewan untuk mempermudah mencari obat hewan.</p>
                 </div>
                 <Section title='obat' color='bg-primary bg-opacity-75 px-5 py-3' />
                 <Section title='vaksin' color='bg-primary bg-opacity-25 px-5 py-3' />
