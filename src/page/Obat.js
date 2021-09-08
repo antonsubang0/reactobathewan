@@ -124,8 +124,9 @@ const Obat = () => {
         });
     };
     const [imagebefore, setImagebefore] = useState(true);
-    const bfloadImage = () => {
+    const bfloadImage = (e) => {
         setImagebefore(false);
+        console.log(e);
     }
 
     return (

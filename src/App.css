@@ -39,3 +39,10 @@ body {
 .modal-footer.css {
   justify-content: center;
 }
+
+.logincs {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

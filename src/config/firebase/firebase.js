@@ -107,5 +107,26 @@ const readSaran = () => {
     })
   })
 }
+const registerFire = (data) => {
+  return new Promise((resolve, reject)=>{
+    firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+    .then((userCredential) => {
+      localStorage.setItem('loses', userCredential.user.uid);
+      resolve(true);
+    }).catch((error) => {
+      reject(false);
+    });
+  })
+}
+const logoutFire = () => {
+  return new Promise((resolve, reject)=>{
+    firebase.auth().signOut().then(() => {
+      localStorage.removeItem('loses');
+      resolve(true);
+    }).catch((error) => {
+      reject(error);
+    });
+  })
+}
 
-export { writeData, readData, uploadImage, deleteData, readHistory, readSaran };
+export { writeData, readData, uploadImage, deleteData, readHistory, readSaran, registerFire, logoutFire };

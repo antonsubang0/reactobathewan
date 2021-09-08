@@ -1,5 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import Logo from '../assets/logo.png'
+import { logoutFire } from "../config/firebase/firebase";
 
 const ListNavbar = ({ke, label}) => {
     let match = useLocation();
@@ -11,6 +12,10 @@ const ListNavbar = ({ke, label}) => {
 }
 
 const NavbarCs = () => {
+    const history = useHistory();
+    const logoutBtn = () => {
+        logoutFire().then(res => res ? history.push('/') : null).catch((e)=>{ console.log(e)}); 
+    }
     return (
         <>
             <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
@@ -34,6 +39,9 @@ const NavbarCs = () => {
                             <ListNavbar ke='/home/saran' label='Saran' />
                             <ListNavbar ke='/home/history' label='History' />
                         </ul>
+                        <div className='justify-content-end'>
+                            <button className='btn btn-danger' onClick={logoutBtn}>Logout</button>
+                        </div>
                     </div>
                 </div>
                 </div>
