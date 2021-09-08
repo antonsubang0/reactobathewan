@@ -19,12 +19,12 @@ const Loader = () => {
         <div className='bg-dark bg-opacity-25'>
             <NavLogin />
             <div className="container px-0 bg-light">
-                <div className="row justify-content-center">
+                <div className="row justify-content-center ms-0 me-0">
                     <div className="col-8 col-sm-6 col-md-4 col-lg-3 mt-5">
                         <img className='img-fluid' src={LogoCenter} alt='Logo'></img>
                     </div>
                 </div>
-                <div className="row justify-content-center mt-1 mb-3 text-center">
+                <div className="row justify-content-center mt-1 mb-3 text-center ms-0 me-0">
                     <div className='col-8 col-sm-6 col-md-4 col-lg-3 h2'>Obat Hewan</div>
                     <p className='px-3'>Aplikasi Obat Hewan adalah Katalog Obat Hewan untuk mempermudah mencari obat hewan.</p>
                 </div>
