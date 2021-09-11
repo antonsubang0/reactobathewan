@@ -1,15 +1,13 @@
-import NavbarCs from "../component/NavbarCs";
+import NavLogin from "../component/NavLogin";
 import { useParams, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import image from '../assets/image.png';
-import { readData, uploadImage, writeData, deleteData, statusLogin } from '../config/firebase/firebase'
-import Form from "../component/Formx";
+import { readData } from '../config/firebase/firebase'
 import Modal from "../component/Modal";
-import Compress from "compress.js";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const Obat = () => {
+const CategoryH = () => {
     const history = useHistory();
     const {category} = useParams();
     const [dataApi, setDataApi] = useState([]);
@@ -38,12 +36,8 @@ const Obat = () => {
     }
     useEffect(()=> {
         document.querySelector('body').style.overflow  = 'auto';
-        if (!statusLogin()) {
-            history.push('/');   
-        }
         const firstLoad = async () => {
             await readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
-            document.getElementById('closeNav').click();
         }
         firstLoad();
     },[category, history]);
@@ -58,39 +52,6 @@ const Obat = () => {
         jenis: '',
         judul: '',
     });
-    const dataEmpty = {
-        judul : '',
-        indikasi : '',
-        jenis : category,
-        hewan : '',
-        sumber : '',
-        deskripsi : '',
-        img : '',
-    };
-    const [dataPost, setdataPost] = useState(dataEmpty);
-    const [imagex, setimagex] = useState(image);
-    const inputForm = (e) => {
-        const { id, value } = e.target;
-        setdataPost(prevState => ({
-                ...prevState,
-                [id]: value.split('\n').join(' ')
-        }));
-    };
-    const submit = async () => {
-        await uploadImage(imagex).then((res)=>{
-            dataPost.img = res;
-            writeData(dataPost).then(()=>{
-                setdataPost(dataEmpty);
-                setimagex(image);
-                readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
-            });
-        });
-    };
-    const deletePost = () => {
-        deleteData(detail.id, detail.judul, detail.img).then(()=>{
-            readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
-        })
-    }
     const toTitleCase = (str) => {
         return str.replace(
           /\w\S*/g,
@@ -105,28 +66,6 @@ const Obat = () => {
     const setDetail = (e) => {
         setdetail(e);
     };
-    const pickerImage = async (e) => {
-        // const FR= new FileReader();
-        // FR.onload = (temp) => {
-        //     console.log(temp);
-        //     setimagex(temp.target.result);
-        // }
-        // FR.readAsDataURL(e.target.files[0]);
-        const kompres = new Compress();
-        const filess= [...e.target.files];
-        kompres.compress(filess, {
-            size: 4,
-            quality: 0.75,
-            maxWidth: 320,
-            maxHeight: 240,
-            resize: true
-        })
-        .then((data) => {
-            // console.log(data);
-            console.log(`${data[0].prefix} ${data[0].data}`);
-            setimagex(`${data[0].prefix} ${data[0].data}`);
-        });
-    };
     const [imagebefore, setImagebefore] = useState(true);
     const bfloadImage = (e) => {
         setImagebefore(false);
@@ -134,11 +73,10 @@ const Obat = () => {
 
     return (
         <>
-            <NavbarCs />
+            <NavLogin />
             <div className="container pt-5">
                 <div className="row">
-                    <Form pickerImage={pickerImage} dataValue={dataPost} imagex={imagex} inputForm={inputForm} submit={submit}/>
-                    <div className="col-lg-8 mb-3">
+                    <div className="col mb-3">
                         <div className="row mb-3">
                             <div className="col ms-3 me-3 rounded pt-2 bg-primary text-center">
                                 <h3 className="text-light"><u>{toTitleCase(category)}</u></h3>
@@ -152,7 +90,7 @@ const Obat = () => {
                         <div className="row">
                             {dataCategory.map((data)=>{
                                 return (
-                                    <div className="col-lg-6 mb-3" onClick={() =>{setDetail(data)}} data-bs-toggle="modal" data-bs-target="#exampleModal" key={data.id}>
+                                    <div className="col-lg-4 mb-3" onClick={() =>{setDetail(data)}} data-bs-toggle="modal" data-bs-target="#exampleModal" key={data.id}>
                                         <div className="card">
                                             <div className="card-body">
                                                 <div className="row">
@@ -179,9 +117,9 @@ const Obat = () => {
                     </div>
                 </div>
             </div>
-            <Modal detail={detail} deleteitem={deletePost} />
+            <Modal detail={detail} />
         </>
     )
   }
 
-export default Obat;
+export default CategoryH;

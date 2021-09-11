@@ -22,7 +22,7 @@ const Modal = (props) => {
                         <p className="card-text mb-1 fs-10"><span className="fw-bold">Sumber :</span> {props.detail.sumber}</p>
                     </div>
                     <div className="modal-footer css">
-                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={props.deleteitem}>Delete</button>
+                        { props.deleteitem ? <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={props.deleteitem}>Delete</button> : null}
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>

@@ -12,13 +12,14 @@ import History from './page/History';
 import Saran from './page/Saran';
 import Loader from './page/Loader';
 import Login from './page/Login';
+import CategoryH from './page/CategoryH';
 
 function App() {
   return (
     <Router>
         <Switch>
-          <Route path="/home/detail/:category/:id">
-            <Users />
+          <Route path="/category/:category">
+            <CategoryH />
           </Route>
           <Route path="/home/saran">
             <Saran />
@@ -41,12 +42,6 @@ function App() {
         </Switch>
     </Router>
   );
-}
-
-const Users = () => {
-  return(
-    <div>users</div>
-  )
 }
 
 export default App;
