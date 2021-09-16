@@ -20,6 +20,10 @@ const Form = (props) => {
                         <input type="text" value={props.dataValue.hewan} onChange={props.inputForm} className="form-control" id="hewan" />
                     </div>
                     <div className="mb-2">
+                        <label htmlFor="dosis" className="form-label">Dosis</label>
+                        <textarea value={props.dataValue.dosis} onChange={props.inputForm} className="form-control" id="dosis" rows="3"></textarea>
+                    </div>
+                    <div className="mb-2">
                         <label htmlFor="deskripsi" className="form-label">Deskripsi</label>
                         <textarea value={props.dataValue.deskripsi} onChange={props.inputForm} className="form-control" id="deskripsi" rows="3"></textarea>
                     </div>

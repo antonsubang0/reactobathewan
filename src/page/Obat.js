@@ -66,15 +66,23 @@ const Obat = () => {
         sumber : '',
         deskripsi : '',
         img : '',
+        dosis : '',
     };
     const [dataPost, setdataPost] = useState(dataEmpty);
     const [imagex, setimagex] = useState(image);
     const inputForm = (e) => {
         const { id, value } = e.target;
-        setdataPost(prevState => ({
+        if (id == 'dosis') {
+            setdataPost(prevState => ({
+                ...prevState,
+                [id]: value.split('\n').join('<br>')
+            }));
+        } else {
+            setdataPost(prevState => ({
                 ...prevState,
                 [id]: value.split('\n').join(' ')
-        }));
+            }));
+        }
     };
     const submit = async () => {
         await uploadImage(imagex).then((res)=>{

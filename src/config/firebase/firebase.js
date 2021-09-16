@@ -47,10 +47,11 @@ const uploadImage = (baseUrl) => {
 };
 const readData =  (category, data1) => {
   return new Promise((resolve, reject) => {
+    let finalData = [];
     const bacaData = [];
     firebase.database().ref('data/').once('value', (snapshot) => {
         snapshot.forEach(childSnapshot => {
-          const { judul, indikasi, hewan, sumber, deskripsi, jenis, img, date } = childSnapshot.val();
+          const { judul, indikasi, hewan, sumber, deskripsi, jenis, img, date, dosis } = childSnapshot.val();
           const temp1 = {
               id : childSnapshot.key,
               judul : judul,
@@ -61,13 +62,23 @@ const readData =  (category, data1) => {
               img : img,
               jenis : jenis,
               date : date,
+              dosis : dosis,
           }
           // eslint-disable-next-line eqeqeq
           if(temp1.jenis.toLowerCase().indexOf(category)==!-1){
             bacaData.push(temp1);
           }
         })
-        resolve(bacaData);
+        finalData = bacaData.sort( function ( a, b ) {
+          if ( a.judul < b.judul ){
+            return -1;
+          }
+          if ( a.judul > b.judul ){
+            return 1;
+          }
+            return 0;
+          });
+        resolve(finalData);
     })
   })
 }
