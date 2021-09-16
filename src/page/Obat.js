@@ -72,7 +72,7 @@ const Obat = () => {
     const [imagex, setimagex] = useState(image);
     const inputForm = (e) => {
         const { id, value } = e.target;
-        if (id == 'dosis') {
+        if (id === 'dosis') {
             setdataPost(prevState => ({
                 ...prevState,
                 [id]: value.split('\n').join('<br>')
