@@ -3,7 +3,7 @@ const Form = (props) => {
         <div className="col-lg-4 mb-3">
             <div className="card">
                 <div className="card-body">
-                    <div className="mb-2 px-5 py-3 position-relative r">
+                    <div className="mb-2 px-5 py-3 position-relative">
                         <img className="img-fluid rounded" src={props.imagex} alt="hello"></img>
                         <input type="file" value={props.dataValue.img} onChange={props.pickerImage} className="imagepicker" id="image" />
                     </div>

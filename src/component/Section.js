@@ -45,7 +45,7 @@ const Section = (props) => {
                                             <img className="card-img-top" src={data.img} alt={data.title} />
                                         </div>
                                         <div className="col-7 col-md-8 col-lg-6">
-                                            <h6>{data.title}</h6>
+                                            <h6>{data.judul}</h6>
                                             <p className="card-text mb-1 fs-10">{data.hewan}</p>
                                             <p className="card-text mb-1 fs-10">{splite(data.indikasi, 10)}</p>
                                         </div>

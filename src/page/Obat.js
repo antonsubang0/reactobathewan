@@ -36,17 +36,6 @@ const Obat = () => {
           console.log(dataCategory);
         }
     }
-    useEffect(()=> {
-        document.querySelector('body').style.overflow  = 'auto';
-        if (!statusLogin()) {
-            history.push('/');   
-        }
-        const firstLoad = async () => {
-            await readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
-            document.getElementById('closeNav').click();
-        }
-        firstLoad();
-    },[category, history]);
     const [detail, setdetail] = useState({
         sumber: '',
         date: '',
@@ -139,6 +128,21 @@ const Obat = () => {
     const bfloadImage = (e) => {
         setImagebefore(false);
     }
+    useEffect(()=> {
+        document.querySelector('body').style.overflow  = 'auto';
+        if (!statusLogin()) {
+            history.push('/');   
+        }
+        setdataPost(prevState => ({
+            ...prevState,
+            category: category
+        }));
+        const firstLoad = async () => {
+            await readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
+            document.getElementById('closeNav').click();
+        }
+        firstLoad();
+    },[category, history]);
 
     return (
         <>
