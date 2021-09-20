@@ -45,7 +45,7 @@ const uploadImage = (baseUrl) => {
     })
   })
 };
-const readData =  (category, data1) => {
+const readData =  (category) => {
   return new Promise((resolve, reject) => {
     let finalData = [];
     const bacaData = [];

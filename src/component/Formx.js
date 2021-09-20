@@ -32,7 +32,7 @@ const Form = (props) => {
                         <input type="text" value={props.dataValue.sumber} onChange={props.inputForm} className="form-control" id="sumber" />
                     </div>
                     <div className="text-center mt-3">
-                        <button type="button" onClick={props.submit} className="btn btn-primary">Kirim</button>
+                        <button type="button" onClick={props.submitX} className="btn btn-primary">Kirim</button>
                     </div>
                 </div>
             </div>

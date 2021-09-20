@@ -61,20 +61,13 @@ const Obat = () => {
     const [imagex, setimagex] = useState(image);
     const inputForm = (e) => {
         const { id, value } = e.target;
-        if (id === 'dosis') {
-            setdataPost(prevState => ({
-                ...prevState,
-                [id]: value.split('\n').join('<br>')
-            }));
-        } else {
-            setdataPost(prevState => ({
-                ...prevState,
-                [id]: value.split('\n').join(' ')
-            }));
-        }
+        setdataPost(prevState => ({
+            ...prevState,
+            [id]: value.split('\n').join(' ')
+        }));
     };
-    const submit = async () => {
-        await uploadImage(imagex).then((res)=>{
+    const submitA = () => {
+        uploadImage(imagex).then((res)=>{
             dataPost.img = res;
             writeData(dataPost).then(()=>{
                 setdataPost(dataEmpty);
@@ -133,12 +126,12 @@ const Obat = () => {
         if (!statusLogin()) {
             history.push('/');   
         }
-        setdataPost(prevState => ({
-            ...prevState,
-            category: category
-        }));
-        const firstLoad = async () => {
-            await readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
+        const firstLoad = () => {
+            setdataPost(prevState => ({
+                ...prevState,
+                jenis : category
+            }));
+            readData(category).then(res=> {setDataApi(res); setdataCategory(res);});
             document.getElementById('closeNav').click();
         }
         firstLoad();
@@ -149,7 +142,7 @@ const Obat = () => {
             <NavbarCs />
             <div className="container pt-5">
                 <div className="row">
-                    <Form pickerImage={pickerImage} dataValue={dataPost} imagex={imagex} inputForm={inputForm} submit={submit}/>
+                    <Form pickerImage={pickerImage} dataValue={dataPost} imagex={imagex} inputForm={inputForm} submitX={submitA}/>
                     <div className="col-lg-8 mb-3">
                         <div className="row mb-3">
                             <div className="col ms-3 me-3 rounded pt-2 bg-primary text-center">
